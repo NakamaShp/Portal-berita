@@ -10,6 +10,7 @@ use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Actions\ViewAction;
 use Filament\Actions\DeleteAction;
+use Filament\Tables\Filters\SelectFilter;
 
 class NewsTable
 {
@@ -27,12 +28,19 @@ class NewsTable
                     ->label('Thumbnail'),
                 TextColumn::make('content')
                     ->label('Content')
-                    ->limit(50), // batasi hanya 50 karakter
-                    
-                    
+                    ->limit(50)
+                    ->tooltip(fn ($state) => html_entity_decode(strip_tags($state)))
+                    ->formatStateUsing(fn ($state) => html_entity_decode(strip_tags($state))), // batasi hanya 50 karakter
+
+
             ])
             ->filters([
-                //
+                SelectFilter::make('author_id')
+                    ->relationship('author', 'name')
+                    ->label('Select Author'),
+                SelectFilter::make('news_category_id')
+                    ->relationship('newsCategory', 'title')
+                    ->label('Select Category'),
             ])
             ->recordActions([
                 ViewAction::make(),
