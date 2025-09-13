@@ -9,7 +9,9 @@
 <body class="font-sans antialiased bg-gray-50 dark:bg-gray-900">
   <div class="w-full">
     @include('includes.navbar')
+    
     @yield('content')
+    @include('includes.footer')
   </div>
 </body>
 </html>
