@@ -8,3 +8,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingController::class, 'index'])->name('Landing');
 Route::get('/about', [AboutController::class, 'index'])->name('About');
 Route::get('/news', [NewsController::class, 'index'])->name('News');
+Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');

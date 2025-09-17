@@ -16,4 +16,12 @@ class NewsController extends Controller
         $featureds = News::where('is_featured', true)->get();
         return view('pages.news', compact('news', 'banners', 'featureds'));
     }
+
+    public function show($slug)
+    {
+        $news = News::where('slug', $slug)->first();
+        $newests = News::orderby('created_at', 'desc')->get()->take(4);
+
+        return view('pages.show', compact('news', 'newests'));
+    }
 }
