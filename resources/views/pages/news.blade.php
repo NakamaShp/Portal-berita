@@ -2,98 +2,82 @@
 
 @section('title', 'About Us')
 
-@section ('content')
+@section('content')
 
-<!-- 
-Install the "flowbite-typography" NPM package to apply styles and format the article content: 
+<!-- Berita Unggulan -->
 
-URL: https://flowbite.com/docs/components/typography/ 
--->
+
+
+
+<div class="bg-gray-900 py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:mx-0">
+      <h2 class="text-4xl font-semibold tracking-tight text-pretty text-white sm:text-5xl">Berita Unggulan</h2>
+      <p class="mt-2 text-lg/8 text-gray-300">Learn how to grow your business with our expert advice.</p>
+    </div>
+    <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-700 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+
+      @foreach ($featureds as $featured )
+      <article class="flex max-w-xl flex-col items-start justify-between">
+        <div class="flex items-center gap-x-4 text-xs">
+          <time datetime="2020-03-16" class="text-gray-400">Mar 16, 2020</time>
+          <a href="#" class="relative z-10 rounded-full bg-gray-800/60 px-3 py-1.5 font-medium text-gray-300 hover:bg-gray-800">{{ $featured->newsCategory->title }}</a>
+        </div>
+        <div class="group relative grow pt-4">
+          <img src="{{ asset('storage/' . $featured->thumbnail) }}" style="background-size: cover; background-position: center; display: block; width: 100%; height: 200px; border-radius: 0.5rem; margin-bottom: 1.25rem;">
+          <h3 class="mt-3 text-lg/6 font-semibold text-white group-hover:text-gray-300">
+            <a href="#">
+              <span class="absolute inset-0"></span>
+              {{Str::limit(strip_tags( $featured->title),50 ) }}
+            </a>
+          </h3>
+          <p class="mt-5 line-clamp-3 text-sm/6 text-gray-400">{{ Str::limit (strip_tags($featured->content), 200)  }}</p>
+        </div>
+        <div class="relative mt-8 flex items-center gap-x-4 justify-self-end">
+          <img src={{ asset ('storage/' . $featured->author->avatar) }} class="size-10 rounded-full bg-gray-800" />
+          <div class="text-sm/6">
+            <p class="font-semibold text-white">
+              <a href="#">
+                <span class="absolute inset-0"></span>
+                {{ $featured->author->name }}
+              </a>
+            </p>
+            <p class="text-gray-400">{{ $featured->author->role }}</p>
+          </div>
+        </div>
+      </article>
+      @endforeach
+
+    </div>
+  </div>
+</div>
+
+
 
 
 <aside aria-label="Related articles" class="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800">
-    <div class="px-4 mx-auto max-w-screen-xl">
-        <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Related articles</h2>
-        <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-            <article class="max-w-xs">
-                <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg" alt="Image 1">
-                </a>
-                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                    <a href="#">Our first office</a>
-                </h2>
-                <p class="mb-4 text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-                <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline text-white">
-                    Read in 2 minutes
-                </a>
-            </article>
-            <article class="max-w-xs">
-                <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png" class="mb-5 rounded-lg" alt="Image 2">
-                </a>
-                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                    <a href="#">Enterprise design tips</a>
-                </h2>
-                <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-                <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline text-white">
-                    Read in 12 minutes
-                </a>
-            </article>
-            <article class="max-w-xs">
-                <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-3.png" class="mb-5 rounded-lg" alt="Image 3">
-                </a>
-                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                    <a href="#">We partnered with Google</a>
-                </h2>
-                <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-                <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline text-white">
-                    Read in 8 minutes
-                </a>
-            </article>
-            <article class="max-w-xs">
-                <a href="#">
-                    <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-4.png" class="mb-5 rounded-lg" alt="Image 4">
-                </a>
-                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                    <a href="#">Our first project with React</a>
-                </h2>
-                <p class="mb-4  text-gray-500 dark:text-gray-400">Over the past year, Volosoft has undergone many changes! After months of preparation.</p>
-                <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline text-white">
-                    Read in 4 minutes
-                </a>
-            </article>
-        </div>
+  <div class="px-20 mx-auto max-w-screen-xl">
+    <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Related articles</h2>
+    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      @foreach ($banners as $banner )
+      <article class="max-w-xs">
+        <img src="{{ asset('storage/' . $banner->news->thumbnail) }}" style="background-size: cover; background-position: center; display: block; width: 100%; height: 200px; border-radius: 0.5rem; margin-bottom: 1.25rem;">
+
+        </img>
+        <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+          <a href="#">{{ Str::limit( $banner->news->title, 30) }}</a>
+        </h2>
+        <p class="mb-4 text-gray-500 dark:text-gray-400">
+          {{ Str::limit(strip_tags($banner->news->content), 100) }}
+        </p>
+        <a href=""
+          class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline text-white">
+          Read more
+        </a>
+      </article>
+      @endforeach
     </div>
+  </div>
 </aside>
-
-<section class="bg-white dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div class="mx-auto max-w-screen-md sm:text-center">
-            <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">Sign up for our newsletter</h2>
-            <p class="mx-auto mb-8 max-w-2xl  text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">Stay up to date with the roadmap progress, announcements and exclusive discounts feel free to sign up with your email.</p>
-            <form action="#">
-                <div class="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
-                    <div class="relative w-full">
-                        <label for="email" class="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email address</label>
-                        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
-                                <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
-                                <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
-                            </svg>
-                        </div>
-                        <input class="block p-3 pl-9 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter your email" type="email" id="email" required="">
-                    </div>
-                    <div>
-                        <button type="submit" class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer bg-primary-700 border-primary-600 sm:rounded-none sm:rounded-r-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Subscribe</button>
-                    </div>
-                </div>
-                <div class="mx-auto max-w-screen-sm text-sm text-left text-gray-500 newsletter-form-footer dark:text-gray-300">We care about the protection of your data. <a href="#" class="font-medium text-primary-600 dark:text-primary-500 hover:underline">Read our Privacy Policy</a>.</div>
-            </form>
-        </div>
-    </div>
-</section>
-
-
 
 @endsection

@@ -10,6 +10,7 @@ use Filament\Schemas\Components\Utilities\Set;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Toggle;
 
 
 class NewsForm
@@ -31,12 +32,20 @@ class NewsForm
                 TextInput::make('slug')->readonly(),
                 FileUpload::make('thumbnail')
                     ->required()
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->disk('public')   // simpan ke storage/app/public
+              
+                    ->visibility('public'),
+
                 RichEditor::make('content')
                     ->required()
                     ->columnSpanFull()
                     ->extraAttributes(['style' => 'min-height: 300px;']),
-                     
+                Toggle::make('is_featured')
+
+
+
+
 
 
 

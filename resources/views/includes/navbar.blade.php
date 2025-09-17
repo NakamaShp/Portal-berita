@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <link href="./css/output.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </head>
 
@@ -14,12 +15,12 @@
 
     <nav class="px-20 bg-white border-gray-200 dark:bg-gray-900 fixed w-full z-50 top-0 left-0">
       <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
-        <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-          <span class="self-center text-base font-semibold whitespace-nowrap dark:text-white">Pusat Pengembangan Bisnis</span>
+        <a href="https://flowbite.com" class=" flex items-center space-x-3 rtl:space-x-reverse">
+          <img src="https://flowbite.com/docs/images/logo.svg" class=" ml-2 md:ml-0 h-8" alt="Flowbite Logo" />
+          <span class="hidden sm:inline self-center text-base font-semibold whitespace-nowrap dark:text-white">Pusat Pengembangan Bisnis</span>
         </a>
         <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
-          <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Get Started</a>
+          <a href="#" class=" hidden sm:inline text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Get Started</a>
           <button data-collapse-toggle="mega-menu-icons" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-icons" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">

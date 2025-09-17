@@ -11,6 +11,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Actions\ViewAction;
 use Filament\Actions\DeleteAction;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Columns\ToggleColumn as ToogleColumn;
 
 class NewsTable
 {
@@ -23,14 +24,20 @@ class NewsTable
                 TextColumn::make('newsCategory.title')
                     ->label('Category'),
                 TextColumn::make('title')
-                    ->label('Title'),
+                    ->label('Title')
+                    ->limit(30)
+                    ->tooltip(fn($state) => html_entity_decode(strip_tags($state)))
+                    ->formatStateUsing(fn($state) => html_entity_decode(strip_tags($state))), // batasi hanya 50 karakter
                 ImageColumn::make('thumbnail')
                     ->label('Thumbnail'),
                 TextColumn::make('content')
                     ->label('Content')
                     ->limit(50)
-                    ->tooltip(fn ($state) => html_entity_decode(strip_tags($state)))
-                    ->formatStateUsing(fn ($state) => html_entity_decode(strip_tags($state))), // batasi hanya 50 karakter
+                    ->tooltip(fn($state) => html_entity_decode(strip_tags($state)))
+                    ->formatStateUsing(fn($state) => html_entity_decode(strip_tags($state))), // batasi hanya 50 karakter
+                ToogleColumn::make('is_featured')
+                    ->label('Is Featured')
+                
 
 
             ])

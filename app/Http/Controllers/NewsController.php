@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\News;
+use App\Models\Banner;
 
 class NewsController extends Controller
 {
     public function index()
     {
-        return view('pages.news');
+
+        $news = News::all();
+        $banners = Banner::all();
+        $featureds = News::where('is_featured', true)->get();
+        return view('pages.news', compact('news', 'banners', 'featureds'));
     }
 }

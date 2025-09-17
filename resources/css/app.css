@@ -1,3 +1,15 @@
 @import "tailwindcss";
 
+/* Default: semua tampil */
+.navbar .title,
+.navbar .btn-getstarted {
+    display: inline-block;
+}
 
+/* Mobile < 640px: sembunyikan title & button */
+@media (max-width: 639px) {
+    .navbar .title,
+    .navbar .btn-getstarted {
+        display: none;
+    }
+}
