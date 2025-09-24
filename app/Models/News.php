@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
-    protected $fillable = ['author_id', 'news_category_id', 'title', 'slug', 'thumbnail', 'content'.'is_featured'];
+    protected $fillable = ['author_id', 'news_category_id', 'title', 'slug', 'thumbnail', 'content','is_featured'];
 
     public function author()
     {
@@ -22,5 +22,7 @@ class News extends Model
     {
         return $this->hasOne(Banner::class);
     }
+
+    
 }
 

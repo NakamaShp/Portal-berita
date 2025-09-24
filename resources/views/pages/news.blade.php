@@ -62,33 +62,33 @@
     </div>
     <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-700 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
 
-      @foreach ($banners as $banner )
+      @foreach ($news as $new )
       <article class="flex max-w-xl flex-col items-start justify-between">
           <div class="flex items-center gap-x-4 text-xs">
-            <time datetime="2020-03-16" class="text-gray-400">{{ $banner->updated_at->format('M d, Y') }}</time>
+            <time datetime="2020-03-16" class="text-gray-400">{{ $new->updated_at->format('M d, Y') }}</time>
             <a href="#" class="relative z-10 rounded-full bg-gray-800/60 px-3 py-1.5 font-medium text-gray-300 hover:bg-gray-800">
-              {{ $banner->news->newsCategory->title }}</a>
+              {{ $new->newsCategory->title }}</a>
           </div>
           <div class="group relative grow pt-4">
-            <img src="{{ asset('storage/' . $banner->news->thumbnail) }}" style="background-size: cover; background-position: center; display: block; width: 100%; height: 200px; border-radius: 0.5rem; margin-bottom: 1.25rem;">
+            <img src="{{ asset('storage/' . $new->thumbnail) }}" style="background-size: cover; background-position: center; display: block; width: 100%; height: 200px; border-radius: 0.5rem; margin-bottom: 1.25rem;">
             <h3 class="mt-3 text-lg/6 font-semibold text-white group-hover:text-gray-300">
-              <a href="{{ route('news.show', $banner->news->slug) }}">
+              <a href="{{ route('news.show', $new->slug) }}">
                 <span class="absolute inset-0"></span>
-                {{Str::limit(strip_tags( $banner->news->title),50 ) }}
+                {{Str::limit(strip_tags( $new->title),50 ) }}
               </a>
             </h3>
-            <p class="mt-5 line-clamp-3 text-sm/6 text-gray-400">{{ Str::limit (strip_tags($banner->news->content), 200)  }}</p>
+            <p class="mt-5 line-clamp-3 text-sm/6 text-gray-400">{{ Str::limit (strip_tags($new->content), 200)  }}</p>
           </div>
           <div class="relative mt-8 flex items-center gap-x-4 justify-self-end">
-            <img src={{ asset ('storage/' . $banner->news->author->avatar) }} class="size-10 rounded-full bg-gray-800" />
+            <img src={{ asset ('storage/' . $new->author->avatar) }} class="size-10 rounded-full bg-gray-800" />
             <div class="text-sm/6">
               <p class="font-semibold text-white">
                 <a href="#">
                   <span class="absolute inset-0"></span>
-                  {{ $banner->news->author->name }}
+                  {{ $new->author->name }}
                 </a>
               </p>
-              <p class="text-gray-400">{{ $banner->news->author->role }}</p>
+              <p class="text-gray-400">{{ $new->author->role }}</p>
             </div>
           </div>
       </article>

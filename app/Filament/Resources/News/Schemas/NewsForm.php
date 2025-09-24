@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Toggle;
 
 
@@ -33,10 +32,10 @@ class NewsForm
                 FileUpload::make('thumbnail')
                     ->required()
                     ->columnSpanFull()
-                    ->disk('public')   // simpan ke storage/app/public
-              
-                    ->visibility('public'),
+                    ->disk('public')
+                    ->visibility('public'),  // simpan ke storage/app/private/
 
+                   
                 RichEditor::make('content')
                     ->required()
                     ->columnSpanFull()
