@@ -27,9 +27,4 @@ class Service extends Model
     {
         return $this->belongsToMany(Agent::class, 'agent_service');
     }
-
-    protected $casts = [
-        'is_active' => 'boolean', // Tambahkan baris ini
-        // 'email_verified_at' => 'datetime',
-    ];
 }

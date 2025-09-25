@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Services\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -15,20 +16,26 @@ class ServiceForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->label('Nama Service')
+                    ->label('Service Name')
                     ->required()
+
                     ->maxLength(255),
-                Textarea::make('description')
-                    ->label('Deskripsi')
-                    ->nullable(),
                 Select::make('is_active')
                     ->label('Status')
                     ->options([
-                        1 => 'Aktif',
-                        0 => 'Tidak Aktif',
+                        'active' => 'Active',
+                        'inactive' => 'Inactive',
                     ])
-                    ->default(1) // Mengatur default ke "Aktif"
-                    ->required()
+                    ->default('active') // Mengatur default ke "Aktif"
+                    ->required(),
+                FileUpload::make('thumbnail')
+                    ->label('Thumbnail')
+                    ->required(),
+                Textarea::make('description')
+                    ->label('Description')
+                    ->nullable(),
+
+
             ]);
     }
 }

@@ -7,6 +7,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -18,13 +19,20 @@ class ServicesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Nama Service'),
+                    ->label('Service Name'),
+                ImageColumn::make('thumbnail')
+                    ->label('Thumbnail'),
+
                 Textcolumn::make('description')
+                    ->label('Description')
                     ->limit(50),
-                Textcolumn::make('is_active')
-                    ->badge()
+                TextColumn::make('is_active')
                     ->label('Status')
-                    ->color(fn(bool $state): string => $state ? 'success' : 'danger'),
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'active' => 'success',
+                        'inactive' => 'danger',
+                    }),
                 Textcolumn::make('created_at')
                     ->label('Dibuat')
                     ->dateTime('d M Y H:i'),
@@ -32,9 +40,10 @@ class ServicesTable
             ->filters([
                 SelectFilter::make('is_active')
                     ->options([
-                        1 => 'Aktif',
-                        0 => 'Nonaktif',
-                    ]),
+                        'active' => 'Aktif',
+                        'inactive' => 'Nonaktif',
+                    ])
+                    ->label('Status'),
             ])
             ->recordActions([
                 ViewAction::make(),
